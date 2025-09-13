@@ -4,21 +4,86 @@
     "slug": "mummyhelp",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "owner": "mohdtaiyabkhan239",
+    "description": "Voice-activated emergency alert app for children and parents",
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "splash": {
+      "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#2c3e50"
+      "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
+    "plugins": [
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Allow MummyHelp to access your microphone for voice-activated emergency alerts."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow MummyHelp to access your location for emergency alerts.",
+          "locationAlwaysPermission": "Allow MummyHelp to access your location in the background for continuous tracking during emergencies."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#FF6B6B",
+          "sounds": ["./assets/notification-sound.wav"]
+        }
+      ]
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mummyhelp.app",
+      "infoPlist": {
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "MummyHelp needs access to your location to send emergency alerts and track your safety.",
+        "NSLocationAlwaysUsageDescription": "MummyHelp needs background location access to continuously track your location during emergencies.",
+        "UIBackgroundModes": [
+          "location",
+          "background-processing"
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#2c3e50"
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.mummyhelp.app",
+      "versionCode": 1,
+      "permissions": [
+        "RECORD_AUDIO",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
+        "FOREGROUND_SERVICE",
+        "POST_NOTIFICATIONS"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "scheme": "mummyhelp",
+    "extra": {
+      "eas": {
+        "projectId": "2571c036-b08a-4511-afa9-c8057724617e"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/2571c036-b08a-4511-afa9-c8057724617e"
     }
   }
-} 
+}
